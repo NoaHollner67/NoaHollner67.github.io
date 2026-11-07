@@ -1,200 +1,251 @@
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Hollner, création de sites web à Saverne</title>
-<meta name="description" content="Création de sites web pour les entreprises du secteur de Saverne : artisans, commerces, restaurants, cabinets. Devis gratuit sous 48 heures.">
+<meta name="description" content="Sites web pour les artisans, commerces et cabinets du secteur de Saverne. Maquette gratuite sous 48 heures, prix annoncé d'avance, site et nom de domaine à vous.">
 <link rel="canonical" href="https://noahollner.fr/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="Hollner, création de sites web à Saverne"><meta property="og:description" content="Création de sites web pour les entreprises du secteur de Saverne : artisans, commerces, restaurants, cabinets. Devis gratuit sous 48 heures."><meta property="og:type" content="website"><meta property="og:url" content="https://noahollner.fr/"><meta name="theme-color" content="#0E2236">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500&family=Public+Sans:wght@400;600&display=swap">
+<meta name="color-scheme" content="light dark"><meta name="theme-color" content="#0E2236">
+<meta property="og:title" content="Hollner, création de sites web à Saverne"><meta property="og:description" content="Une maquette à votre nom sous 48 heures, sans engagement. Sites pour les entreprises du secteur de Saverne."><meta property="og:type" content="website"><meta property="og:url" content="https://noahollner.fr/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@500&family=Public+Sans:wght@400;600&display=swap">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Hollner","description":"Création de sites web pour les entreprises du secteur de Saverne","telephone":"+33614863073","email":"noahollner@gmail.com","url":"https://noahollner.fr/","areaServed":"Saverne, Bas-Rhin"}</script>
 <style>
-/* Charte Hollner : H en trois barres, nuit / rhin / bouée, un seul jaune par écran. */
-:root{
-  --nuit:#0E2236;--rhin:#1F6A8A;--bouee:#F2B632;--on-bouee:#0E2236;
-  --bg:#F2F5F7;--surface:#FFFFFF;--ink:#0E2236;--muted:#4A5F70;--line:#CBD6DE;--brume:#DCE6EC;
-  --footer:#0E2236;--footer-ink:#EAF1F5;--mark-bg:#0E2236;--focus:#1F6A8A;
-  --display:"Archivo","Arial Black",system-ui,sans-serif;
-  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --rhin:#5FB0D3;--bg:#0A1826;--surface:#0E2236;--ink:#EAF1F5;--muted:#9FB3C2;--line:#24405A;--brume:#16324A;
-  --footer:#07121D;--mark-bg:#16324A;--focus:#F2B632;color-scheme:dark}}
-:root[data-theme="dark"]{
-  --rhin:#5FB0D3;--bg:#0A1826;--surface:#0E2236;--ink:#EAF1F5;--muted:#9FB3C2;--line:#24405A;--brume:#16324A;
-  --footer:#07121D;--mark-bg:#16324A;--focus:#F2B632;color-scheme:dark}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:400 16px/26px var(--sans);
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-a{color:var(--rhin)}
-:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
-.wrap{max-width:1040px;margin:0 auto}
-h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
-h1{font-weight:800;font-size:clamp(36px,7vw,64px);line-height:1.02;letter-spacing:-.02em}
-h2{font-weight:800;font-size:clamp(28px,4.5vw,44px);line-height:1.05;letter-spacing:-.015em}
-h3{font-weight:700;font-size:18px;line-height:26px}
-.lab{font:500 12px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-p{margin:0}
+:root{--nuit:#0E2236;--rhin:#1F6A8A;--bouee:#F2B632;--on-bouee:#0E2236;
+--bg:#F2F5F7;--surface:#fff;--ink:#0E2236;--muted:#4A5F70;--line:#CBD6DE;--brume:#DCE6EC;--deep:#0E2236;--deep-ink:#EAF1F5;--deep-muted:#9FB3C2;--deep-line:#24405A;--focus:#1F6A8A;
+--display:"Archivo","Arial Black",system-ui,sans-serif;--sans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;--g:clamp(16px,4vw,40px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--rhin:#5FB0D3;--bg:#0A1826;--surface:#0E2236;--ink:#EAF1F5;--muted:#9FB3C2;--line:#24405A;--brume:#16324A;--deep:#07121D;--focus:#F2B632}}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/28px var(--sans);overflow-x:hidden}
+a{color:inherit}p{margin:0}h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
+.w{max-width:1200px;margin:0 auto;padding:0 var(--g)}
+.lab{font:500 12px/16px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 /* header */
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);
-  margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:0 max(16px,env(safe-area-inset-left,0px))}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
-.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px;max-width:1040px;margin:0 auto}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
-.brand svg{width:36px;height:36px;flex:none}
-.brand b{font:800 18px/1 var(--display);letter-spacing:.06em}
-.btn{display:inline-block;font:600 16px/24px var(--sans);text-decoration:none;padding:12px 20px;border-radius:4px;transition:background-color .15s,color .15s;border:2px solid transparent}
-.btn-main{background:var(--bouee);color:var(--on-bouee)}
-.btn-main:hover{background:#FFC94D}
-.btn-alt{border-color:var(--ink);color:var(--ink)}
-.btn-alt:hover{background:var(--brume)}
-nav a.t{color:var(--ink);text-decoration:none;margin-right:20px;font-weight:600;font-size:15px}
-nav a.t:hover{color:var(--rhin)}
-@media(max-width:700px){nav a.t{display:none}}
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid transparent;transition:border-color .2s}
+header.sc{border-color:var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.brand svg{width:34px;height:34px}.brand b{font:800 17px/1 var(--display);letter-spacing:.08em}
+nav{display:flex;align-items:center;gap:28px}nav a.t{text-decoration:none;font-weight:600;font-size:15px;color:var(--muted);transition:color .15s}nav a.t:hover{color:var(--ink)}
+.tel{font:600 15px/1 var(--sans);text-decoration:none;border:1.5px solid var(--ink);padding:11px 16px;border-radius:4px;transition:background .15s}.tel:hover{background:var(--brume)}
+@media(max-width:860px){nav a.t{display:none}}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 17px/24px var(--sans);text-decoration:none;padding:16px 26px;border-radius:4px;border:2px solid transparent;transition:background .15s,color .15s,transform .15s}
+.btn.main{background:var(--bouee);color:var(--on-bouee)}.btn.main:hover{background:#FFC94D}.btn.main:active{transform:translateY(1px)}
+.btn.ghost{border-color:var(--ink)}.btn.ghost:hover{background:var(--brume)}
+.btn svg{width:18px;height:18px;transition:transform .2s}.btn:hover svg{transform:translateX(3px)}
 /* hero */
-.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center;padding:64px 0 72px}
-.hero .lab{margin-bottom:20px}
-.hero p.lead{font-size:19px;line-height:30px;max-width:34em;margin:24px 0 32px;color:var(--muted)}
+.hero{position:relative;padding:clamp(40px,7vw,96px) 0 clamp(56px,8vw,112px);overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:var(--rhin);opacity:.16;-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><path d='M24 20v8M20 24h8' stroke='black' stroke-width='1.5'/></svg>"),linear-gradient(#000,transparent 85%);-webkit-mask-composite:source-in;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><path d='M24 20v8M20 24h8' stroke='black' stroke-width='1.5'/></svg>"),linear-gradient(#000,transparent 85%);mask-composite:intersect;pointer-events:none}
+.hero .w{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,72px);align-items:center}
+.hero .lab{margin-bottom:28px;display:flex;align-items:center;gap:12px}.hero .lab:before{content:"";width:28px;height:2px;background:var(--rhin)}
+h1{font-weight:800;font-size:clamp(42px,6.6vw,88px);line-height:.98;letter-spacing:-.035em}
+h1 u{text-decoration:none;background:linear-gradient(var(--rhin),var(--rhin)) 0 92%/100% .09em no-repeat}
+.sub{font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:var(--muted);max-width:30em;margin:28px 0 40px}
 .cta{display:flex;flex-wrap:wrap;gap:12px}
-.hmark{width:100%;max-width:320px;justify-self:end}
-@media(max-width:800px){.hero{grid-template-columns:1fr;padding:40px 0 48px;gap:32px}.hmark{max-width:180px;justify-self:start}}
-/* bands */
-.band{margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:72px max(16px,env(safe-area-inset-left,0px))}
-.band.alt{background:var(--brume)}
-.sec-head{max-width:640px;margin-bottom:40px}
-.sec-head .lab{margin-bottom:12px}
-.sec-head p{margin-top:16px;color:var(--muted)}
-.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0}
-.card .price{font:800 36px/1 var(--display);letter-spacing:-.015em}
-.card .price small{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px}
-.card ul{margin:4px 0 0;padding-left:20px;color:var(--muted)}
-.card li{margin-bottom:6px}
-.card.main{border:2px solid var(--ink)}
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;counter-reset:s;padding:0;list-style:none;margin:0}
-.steps li{counter-increment:s;min-width:0}
-.steps li::before{content:"Étape " counter(s);font:500 12px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px}
-.steps p{color:var(--muted);margin-top:6px}
-/* reasons */
-.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
-.why p{color:var(--muted);margin-top:8px}
-/* about + contact */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-@media(max-width:800px){.two{grid-template-columns:1fr;gap:32px}}
-.two p+p{margin-top:12px}
-dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:12px 24px}
-dt{font:500 12px/26px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-dd{margin:0;overflow-wrap:anywhere}
-.todo{color:var(--muted);font-style:italic}
+.note{margin-top:20px;font-size:14px;color:var(--muted)}
+@media(max-width:940px){.hero .w{grid-template-columns:1fr}}
+/* search demo */
+.sd{background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 0 var(--line),0 24px 48px -24px rgba(14,34,54,.28);overflow:hidden}
+.sd-q{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);font-size:17px}
+.sd-q svg{width:20px;height:20px;color:var(--muted);flex:none}.sd-q span{min-height:28px}
+.caret{display:inline-block;width:2px;height:20px;background:var(--rhin);vertical-align:-4px;margin-left:2px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.sd-b{padding:20px;display:grid;gap:20px;min-height:296px;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
+.sd.on .sd-b{opacity:1;transform:none}
+.sk{display:grid;gap:8px}.sk i{display:block;height:10px;border-radius:5px;background:var(--brume)}.sk i:nth-child(1){width:34%;height:12px}.sk i:nth-child(2){width:78%}.sk i:nth-child(3){width:62%}
+.me{display:grid}.me>div{grid-area:1/1;transition:opacity .45s,transform .45s}
+.me .bare{border:1px solid var(--line);border-radius:8px;padding:16px;background:var(--bg)}
+.me .site{padding:2px 0}
+.sd[data-s=bare] .site,.sd[data-s=site] .bare{opacity:0;transform:translateY(6px);pointer-events:none}
+.bare b,.site .tt{font:700 18px/24px var(--display);display:block}
+.bare small{display:block;color:var(--muted);font-size:14px;line-height:22px;margin-top:4px}
+.stars{color:#C98A00;letter-spacing:2px}
+.pill{display:inline-block;margin-top:10px;font:500 11px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:var(--brume);color:var(--muted)}
+.site .url{font-size:13px;line-height:20px;color:var(--muted)}
+.site .tt{color:var(--rhin);font-size:20px;line-height:26px;margin:2px 0 6px}
+.site p{font-size:15px;line-height:23px;color:var(--muted)}
+.site .sl{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:12px;font-size:14px;font-weight:600;color:var(--rhin)}
+.site .pill{background:var(--rhin);color:#fff}
+.seg{display:flex;border-top:1px solid var(--line)}
+.seg button{flex:1;font:600 14px/20px var(--sans);padding:14px;background:transparent;color:var(--muted);border:0;cursor:pointer;transition:background .15s,color .15s}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.seg button:not([aria-pressed=true]):hover{background:var(--brume)}
+.cap{font-size:13px;color:var(--muted);margin-top:12px}
+/* sections */
+section{padding:clamp(64px,9vw,128px) 0}
+.sh{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:var(--g);margin-bottom:clamp(36px,5vw,64px);align-items:end}
+.sh h2{font-weight:800;font-size:clamp(32px,4.6vw,60px);line-height:1;letter-spacing:-.03em}
+.sh p{color:var(--muted);max-width:34em;font-size:18px}
+.sh .lab{grid-column:1/-1;margin-bottom:-8px}
+@media(max-width:860px){.sh{grid-template-columns:1fr;align-items:start}}
+.rows{border-top:1px solid var(--ink)}
+.row{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:var(--g);padding:28px 0;border-bottom:1px solid var(--line);transition:background .2s}
+.row h3{font-weight:700;font-size:clamp(20px,2vw,26px);line-height:1.2;letter-spacing:-.01em}
+.row p{color:var(--muted)}
+@media(max-width:700px){.row{grid-template-columns:1fr;gap:8px;padding:22px 0}}
+/* prix */
+.tarifs .row{grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) auto;align-items:baseline;padding:32px 0}
+.tarifs .row:hover{background:linear-gradient(90deg,transparent,var(--brume) 20%,var(--brume) 80%,transparent)}
+.tarifs h3{font-size:clamp(24px,2.6vw,34px)}.tarifs .lab{margin-top:6px;display:block}
+.tarifs ul{margin:0;padding:0;list-style:none;color:var(--muted)}.tarifs li{padding-left:22px;position:relative;margin-bottom:4px}
+.tarifs li:before{content:"";position:absolute;left:0;top:12px;width:10px;height:2px;background:var(--rhin)}
+.px{font:800 clamp(40px,5vw,64px)/1 var(--display);letter-spacing:-.035em;text-align:right;white-space:nowrap}.px small{font:600 17px var(--sans);letter-spacing:0;color:var(--muted)}
+@media(max-width:860px){.tarifs .row{grid-template-columns:1fr;gap:12px}.px{text-align:left}}
+.fine{margin-top:24px;font-size:14px;color:var(--muted);max-width:44em}
+/* methode */
+.deep{background:var(--deep);color:var(--deep-ink)}
+.deep .lab,.deep .sh p{color:var(--deep-muted)}
+.tl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative}
+.tl:before{content:"";position:absolute;left:0;right:0;top:11px;height:2px;background:var(--deep-line)}
+.tl li{list-style:none;position:relative;padding:48px 28px 0 0}
+.tl li:before{content:"";position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--deep);border:2px solid var(--rhin)}
+.tl li.fill:before{background:var(--rhin)}
+.tl h3{font-weight:700;font-size:22px;line-height:1.2;margin-bottom:10px}
+.tl p{color:var(--deep-muted);font-size:16px;line-height:25px}.tl .lab{display:block;margin-bottom:10px;color:#7FB9D6}
+ul.tlw{margin:0;padding:0}
+@media(max-width:900px){.tl{grid-template-columns:1fr;gap:36px}.tl:before{left:11px;right:auto;top:0;bottom:0;width:2px;height:auto}.tl li{padding:0 0 0 52px}}
+/* engagements */
+.eng .row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:36px 0}
+.eng h3{font-weight:800;font-size:clamp(26px,3.4vw,44px);line-height:1.02;letter-spacing:-.025em}
+.eng p{align-self:center;font-size:18px}
+@media(max-width:700px){.eng .row{grid-template-columns:1fr}}
+/* faq */
+.faq{max-width:860px}
+.faq details{border-bottom:1px solid var(--line)}.faq details:first-child{border-top:1px solid var(--ink)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:24px;padding:24px 0;font:700 clamp(18px,1.8vw,22px)/1.3 var(--display);letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"";flex:none;width:14px;height:14px;margin-top:8px;background:linear-gradient(var(--ink),var(--ink)) center/100% 2px no-repeat,linear-gradient(var(--ink),var(--ink)) center/2px 100% no-repeat;transition:transform .25s}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq details p{padding:0 40px 26px 0;color:var(--muted)}
+/* contact */
+.ct{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:var(--g);align-items:end}
+.ct h2{font-weight:800;font-size:clamp(40px,6.4vw,92px);line-height:.96;letter-spacing:-.035em}
+.ct dl{margin:0;display:grid;gap:18px}.ct dt{font:500 12px/16px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--deep-muted);margin-bottom:4px}
+.ct dd{margin:0;font:700 clamp(22px,2.4vw,30px)/1.2 var(--display);letter-spacing:-.01em;overflow-wrap:anywhere}.ct dd a{text-decoration:none;border-bottom:2px solid var(--rhin)}.ct dd a:hover{border-color:var(--bouee)}
+.ct .cta{margin-top:40px}.deep .btn.ghost{border-color:var(--deep-ink);color:var(--deep-ink)}.deep .btn.ghost:hover{background:var(--deep-line)}
+@media(max-width:860px){.ct{grid-template-columns:1fr;align-items:start;gap:48px}}
 /* footer */
-footer{background:var(--footer);color:var(--footer-ink);margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));
-  padding:48px max(16px,env(safe-area-inset-left,0px)) calc(48px + env(safe-area-inset-bottom,0px))}
-footer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-@media(max-width:800px){footer .wrap{grid-template-columns:1fr}}
-footer .brand{color:var(--footer-ink)}
-footer .brand svg rect:first-child{fill:#16324A}
-footer small{display:block;font-size:14px;line-height:22px;color:#9FB3C2}
-footer .lab{color:#9FB3C2;margin-bottom:8px}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
-</style>
-
-
-<header><div class="bar">
-  <a class="brand" href="#top" aria-label="Hollner, accueil">
-    <svg viewBox="0 0 96 96" aria-hidden="true"><rect width="96" height="96" rx="8" fill="var(--mark-bg)"/><rect x="24" y="20" width="14" height="56" fill="#fff"/><rect x="58" y="20" width="14" height="56" fill="#fff"/><rect x="38" y="42" width="20" height="12" fill="#F2B632"/></svg>
-    <b>HOLLNER</b>
-  </a>
-  <nav><a class="t" href="#offres">Offres</a><a class="t" href="#deroule">Déroulé</a><a class="t" href="#contact">Contact</a><a class="btn btn-alt" href="#contact" style="padding:8px 16px">Contact</a></nav>
+footer{background:var(--deep);color:var(--deep-ink);padding:0 0 32px;overflow:hidden;border-top:1px solid var(--deep-line)}
+.fm{font:800 clamp(56px,16.4vw,240px)/.8 var(--display);letter-spacing:0;color:#16324A;margin:48px 0 40px;white-space:nowrap;user-select:none}
+.fl{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;font-size:14px;line-height:22px;color:var(--deep-muted)}
+.fl b{color:var(--deep-ink);font-weight:600}
+.todo{font-style:italic}
+/* motion */
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}.caret{animation:none}.sd-b,.me>div,.btn,.btn svg{transition:none}}
+</style></head><body>
+<header id="hd"><div class="w bar">
+ <a class="brand" href="#top" aria-label="Hollner, accueil"><svg viewBox="0 0 96 96" aria-hidden="true"><rect width="96" height="96" rx="8" fill="#0E2236"/><rect x="24" y="20" width="14" height="56" fill="#fff"/><rect x="58" y="20" width="14" height="56" fill="#fff"/><rect x="38" y="42" width="20" height="12" fill="#F2B632"/></svg><b>HOLLNER</b></a>
+ <nav><a class="t" href="#inclus">Ce que vous recevez</a><a class="t" href="#tarifs">Tarifs</a><a class="t" href="#methode">Méthode</a><a class="t" href="#faq">Questions</a><a class="tel" id="h-tel" href="#contact">Contact</a></nav>
 </div></header>
 
-<main id="top"><div class="wrap">
-  <section class="hero">
-    <div>
-      <div class="lab">Sites web · Devis sous 48 h</div>
-      <h1>Des sites pour les entreprises du secteur de Saverne.</h1>
-      <p class="lead">Artisans, commerces, restaurants, cabinets : vos clients vous cherchent sur Google avant de vous appeler. Je construis le site qui répond à leur question, vous le gardez, et vous payez un prix annoncé d'avance.</p>
-      <div class="cta"><a class="btn btn-main" href="#contact">Demander une maquette gratuite</a><a class="btn btn-alt" href="#offres">Voir les offres</a></div>
+<main id="top">
+<div class="hero"><div class="w">
+ <div>
+  <div class="lab">Sites web · Secteur de Saverne</div>
+  <h1>Quand on vous cherche sur Google, <u>on vous trouve</u>.</h1>
+  <p class="sub">Je crée le site des artisans, commerces et cabinets du secteur de Saverne. Vous recevez d'abord une maquette à votre nom, sous 48 heures. Elle ne vous engage à rien.</p>
+  <div class="cta"><a class="btn main" id="h-mail" href="mailto:noahollner@gmail.com?subject=Demande%20de%20maquette&body=Bonjour%2C%0A%0AMon%20entreprise%20%3A%20%0AMon%20m%C3%A9tier%20%3A%20%0AMa%20ville%20%3A%20%0A">Recevoir ma maquette gratuite <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn ghost" href="#tarifs">Voir les tarifs</a></div>
+  <p class="note">Prix annoncé d'avance. Le site et le nom de domaine sont à vous.</p>
+ </div>
+ <div>
+  <div class="sd" id="sd" data-s="bare" aria-label="Exemple : ce que voit un client qui cherche votre métier sur Google">
+   <div class="sd-q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span id="sd-t" data-full="couvreur phalsbourg" aria-live="polite"></span><i class="caret" aria-hidden="true"></i></div>
+   <div class="sd-b">
+    <div class="sk" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="me">
+     <div class="bare"><b>Votre entreprise</b><small><span class="stars" aria-hidden="true">★★★★★</span> 4,9 (70 avis) · Couvreur · Phalsbourg<br>Téléphone et adresse, rien d'autre.</small><span class="pill">Aucun site</span></div>
+     <div class="site"><div class="url">votre-entreprise.fr</div><span class="tt">Votre entreprise, couvreur à Phalsbourg</span><p>Réparation, entretien et travaux de toiture. Devis gratuit, réponse rapide. Photos de chantier et avis clients.</p><div class="sl"><span>Services</span><span>Réalisations</span><span>Demander un devis</span></div><span class="pill">Avec site</span></div>
     </div>
-    <svg class="hmark" viewBox="0 0 90 100" role="img" aria-label="Le H de Hollner en trois barres">
-      <rect x="0" y="0" width="28" height="100" fill="var(--ink)"/><rect x="62" y="0" width="28" height="100" fill="var(--rhin)"/><rect x="28" y="40" width="34" height="20" fill="var(--bouee)"/>
-    </svg>
-  </section>
-</div>
-
-<section class="band alt" id="pour-qui"><div class="wrap">
-  <div class="sec-head"><div class="lab">Pour qui</div><h2>Pour ceux qui travaillent sur le terrain.</h2>
-  <p>Vous n'avez pas le temps de vous occuper d'un site. Moi si. Je travaille avec les métiers du bâtiment, les commerces de proximité, la restauration et les professions de santé du secteur.</p></div>
-  <div class="why">
-    <div><h3>Être trouvé</h3><p>Quand quelqu'un cherche votre métier dans votre ville, votre nom apparaît avec vos horaires, votre téléphone et vos réalisations.</p></div>
-    <div><h3>Rassurer</h3><p>Un site propre, avec vos photos et vos avis, donne confiance avant le premier appel.</p></div>
-    <div><h3>Recevoir des appels</h3><p>Un bouton d'appel et un formulaire sur chaque page. Sur téléphone, un clic suffit.</p></div>
+    <div class="sk" aria-hidden="true"><i></i><i></i><i></i></div>
+   </div>
+   <div class="seg" role="group" aria-label="Afficher le résultat"><button type="button" data-v="bare" aria-pressed="true">Sans site</button><button type="button" data-v="site" aria-pressed="false">Avec site</button></div>
   </div>
+  <p class="cap">Exemple illustratif, aucune entreprise réelle.</p>
+ </div>
+</div></div>
+
+<section id="inclus"><div class="w">
+ <div class="sh rv"><span class="lab">Ce que vous recevez</span><h2>Un site qui travaille pour vous.</h2><p>Pas de jargon, pas de formule à décoder. Voici ce que contient chaque site.</p></div>
+ <div class="rows">
+  <div class="row rv"><h3>Un site lisible sur téléphone</h3><p>La plupart de vos clients vous cherchent depuis leur téléphone. Votre site s'affiche proprement sur tous les écrans.</p></div>
+  <div class="row rv"><h3>Un nom de domaine à votre nom</h3><p>Votre adresse, <i>votre-entreprise.fr</i>, est enregistrée à votre nom. La première année est incluse.</p></div>
+  <div class="row rv"><h3>Un bouton d'appel sur chaque page</h3><p>Sur téléphone, un clic suffit pour vous appeler. Un formulaire de devis complète le contact.</p></div>
+  <div class="row rv"><h3>Vos photos et vos avis</h3><p>Vos réalisations et vos avis Google mis en avant, avec le lien vers votre fiche.</p></div>
+  <div class="row rv"><h3>Les textes rédigés avec vous</h3><p>Vous me dites ce que vous faites, je l'écris clairement. Vous relisez et validez.</p></div>
+ </div>
 </div></section>
 
-<div class="wrap"><section class="band" style="margin:0;padding-left:0;padding-right:0" id="offres">
-  <div class="sec-head"><div class="lab">Offres</div><h2>Des prix annoncés d'avance.</h2>
-  <p>Les prix sont des « à partir de ». Le tarif de lancement de la page unique est réservé aux premiers clients. Le devis exact est gratuit et vous est envoyé sous 48 heures.</p></div>
-  <div class="grid3">
-    <article class="card"><h3>Page unique</h3><div class="price"><small>Tarif de lancement</small>300 €</div>
-      <ul><li>Une page claire : présentation, services, contact</li><li>Lisible sur téléphone</li><li>Mise en ligne comprise</li></ul></article>
-    <article class="card main"><h3>Site vitrine</h3><div class="price"><small>À partir de</small>800 €</div>
-      <ul><li>4 à 5 pages : accueil, services, réalisations, contact</li><li>Apparaître sur Google pour votre métier et votre ville</li><li>Formulaire de contact et bouton d'appel</li></ul></article>
-    <article class="card"><h3>Suivi</h3><div class="price"><small>À partir de</small>40 €<span style="font-size:16px;font-weight:600"> / mois</span></div>
-      <ul><li>Hébergement et nom de domaine</li><li>Mises à jour et sauvegardes</li><li>Sans engagement : le site vous appartient</li></ul></article>
-  </div>
-</section></div>
-
-<section class="band alt" id="deroule"><div class="wrap">
-  <div class="sec-head"><div class="lab">Déroulé</div><h2>Comment ça se passe.</h2></div>
-  <ol class="steps">
-    <li><h3>Maquette gratuite</h3><p>Vous me dites votre métier et votre ville, je vous montre une première page avec votre nom. Sans engagement.</p></li>
-    <li><h3>Devis</h3><p>Un devis écrit d'une page, avec le prix, ce qui est livré et la date. Acompte de 30 à 50 %.</p></li>
-    <li><h3>Réalisation</h3><p>Vous me donnez vos photos et vos textes, ou je les rédige avec vous. Retouches illimitées pendant 15 jours.</p></li>
-    <li><h3>Mise en ligne</h3><p>Le reste du paiement se fait après votre validation. Le site est à vous.</p></li>
-  </ol>
+<section id="tarifs" style="padding-top:0"><div class="w tarifs">
+ <div class="sh rv"><span class="lab">Tarifs</span><h2>Un prix annoncé d'avance.</h2><p>Le devis est écrit, gratuit, et vous le recevez sous 48 heures. Le prix annoncé est le prix payé.</p></div>
+ <div class="rows">
+  <div class="row rv"><div><h3>Page unique</h3><span class="lab">Tarif de lancement</span></div><ul><li>Présentation, services, contact sur une page</li><li>Lisible sur téléphone, mise en ligne comprise</li></ul><div class="px">300 €</div></div>
+  <div class="row rv"><div><h3>Site vitrine</h3><span class="lab">À partir de</span></div><ul><li>4 à 5 pages : accueil, services, réalisations, contact</li><li>Visible sur Google pour votre métier et votre ville</li></ul><div class="px">800 €</div></div>
+  <div class="row rv"><div><h3>Suivi</h3><span class="lab">À partir de</span></div><ul><li>Hébergement et nom de domaine</li><li>Mises à jour et sauvegardes, sans engagement</li></ul><div class="px">40 € <small>/ mois</small></div></div>
+ </div>
+ <p class="fine">Le tarif de lancement de la page unique est réservé aux premiers clients. Les autres prix sont des « à partir de » : le devis fixe le montant exact.</p>
 </div></section>
 
-<div class="wrap"><section class="band two" style="margin:0;padding-left:0;padding-right:0" id="contact">
-  <div>
-    <div class="lab" style="margin-bottom:12px">Qui</div>
-    <h2 style="margin-bottom:24px">Un interlocuteur du coin.</h2>
-    <p>Je m'appelle Noa Hollner et j'habite à Steinbourg. Je travaille avec des entreprises du secteur de Saverne : vous avez affaire à une seule personne, que vous pouvez appeler et rencontrer.</p>
-    <p>Je suis micro-entrepreneur. Vous recevez un devis et une facture en bonne et due forme.</p>
-  </div>
-  <div>
-    <div class="lab" style="margin-bottom:12px">Contact</div>
-    <h2 style="margin-bottom:24px">Parlons de votre site.</h2>
-    <dl>
-      <dt>Téléphone</dt><dd id="c-phone"></dd>
-      <dt>E-mail</dt><dd id="c-mail"></dd>
-      <dt>Zone</dt><dd>Saverne et 20 km autour</dd>
-      <dt>Réponse</dt><dd>Sous 48 heures</dd>
-    </dl>
-    <div class="cta" style="margin-top:24px"><a class="btn btn-main" id="c-btn" href="#contact">Demander une maquette</a></div>
-  </div>
-</section></div>
+<section class="deep" id="methode"><div class="w">
+ <div class="sh rv"><span class="lab">Méthode</span><h2>Vous voyez avant de payer.</h2><p>Chaque étape a un résultat que vous pouvez juger. Vous payez après avoir vu.</p></div>
+ <ul class="tl tlw">
+  <li class="rv"><span class="lab">Avant l'accord</span><h3>Maquette gratuite</h3><p>Vous me donnez votre métier et votre ville. Sous 48 heures, vous recevez une première page à votre nom.</p></li>
+  <li class="rv" style="--d:.08s"><span class="lab">Dès votre accord</span><h3>Devis écrit</h3><p>Une page : le prix, ce qui est livré, la date. Un acompte de 30 à 50 % lance le travail.</p></li>
+  <li class="rv" style="--d:.16s"><span class="lab">Réalisation</span><h3>Votre site, avec vous</h3><p>Photos, textes, retouches. Vous pouvez demander des changements pendant 15 jours.</p></li>
+  <li class="rv fill" style="--d:.24s"><span class="lab">Mise en ligne</span><h3>Le site est à vous</h3><p>Vous réglez le solde après votre validation. Les accès vous sont remis.</p></li>
+ </ul>
+</div></section>
+
+<section class="eng"><div class="w">
+ <div class="rows">
+  <div class="row rv"><h3>Un seul interlocuteur.</h3><p>Vous parlez à la personne qui fait votre site. Elle répond au téléphone, et vous pouvez la rencontrer.</p></div>
+  <div class="row rv"><h3>Pas de piège.</h3><p>Pas de contrat qui vous enferme. Si vous partez, vous gardez votre site et votre nom de domaine.</p></div>
+  <div class="row rv"><h3>Des mots simples.</h3><p>On parle de votre métier et de vos clients, pas de technique.</p></div>
+ </div>
+</div></section>
+
+<section id="faq" style="padding-top:0"><div class="w">
+ <div class="sh rv"><span class="lab">Questions</span><h2>Ce qu'on me demande souvent.</h2><p></p></div>
+ <div class="faq rv">
+  <details><summary>Que se passe-t-il si la maquette ne me plaît pas ?</summary><p>Vous la gardez et vous ne payez rien. La maquette est gratuite et sans engagement.</p></details>
+  <details><summary>À qui appartient le nom de domaine ?</summary><p>À vous. Il est enregistré à votre nom, la première année est incluse. Les années suivantes, il est renouvelé à votre charge, ou compris dans le suivi mensuel.</p></details>
+  <details><summary>Dois-je fournir les textes et les photos ?</summary><p>Si vous avez vos photos, envoyez-les. Pour les textes, vous m'expliquez votre activité et je les rédige. Vous relisez avant la mise en ligne.</p></details>
+  <details><summary>Combien de temps faut-il pour avoir mon site ?</summary><p>La maquette arrive sous 48 heures. Le délai du site complet dépend du nombre de pages. Il est indiqué dans le devis, avec la date.</p></details>
+  <details><summary>Que comprend le suivi à 40 € par mois ?</summary><p>L'hébergement, le nom de domaine, les mises à jour et les sauvegardes. Il est sans engagement : vous pouvez l'arrêter et garder votre site.</p></details>
+ </div>
+</div></section>
+
+<section class="deep" id="contact"><div class="w ct">
+ <div><span class="lab">Contact</span><h2 style="margin-top:20px">Parlons de votre site.</h2>
+  <div class="cta"><a class="btn main" id="c-mailbtn" href="mailto:noahollner@gmail.com?subject=Demande%20de%20maquette">Recevoir ma maquette gratuite <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div>
+ <dl><div><dt>Téléphone</dt><dd id="c-phone"></dd></div><div><dt>E-mail</dt><dd id="c-mail"></dd></div><div><dt>Zone</dt><dd>Saverne et 20 km autour</dd></div><div><dt>Réponse</dt><dd>Sous 48 heures</dd></div></dl>
+</div></section>
 </main>
 
-<footer><div class="wrap">
-  <div>
-    <a class="brand" href="#top"><svg viewBox="0 0 96 96" aria-hidden="true"><rect width="96" height="96" rx="8"/><rect x="24" y="20" width="14" height="56" fill="#fff"/><rect x="58" y="20" width="14" height="56" fill="#fff"/><rect x="38" y="42" width="20" height="12" fill="#F2B632"/></svg><b>HOLLNER</b></a>
-    <small style="margin-top:16px">Création de sites web pour les entreprises du secteur de Saverne.</small>
-  </div>
-  <div>
-    <div class="lab">Mentions légales</div>
-    <small>Noa Hollner, micro-entrepreneur<br>14a rue de la Rondelle, 67790 Steinbourg<br>SIRET : <span id="f-siret"></span><br>Hébergeur du site : <span id="f-host"></span></small>
-  </div>
+<footer><div class="w">
+ <div class="fm" aria-hidden="true">HOLLNER</div>
+ <div class="fl"><div><b>Noa Hollner</b>, micro-entrepreneur<br>Création de sites web pour le secteur de Saverne</div><div><b>Mentions légales</b><br>14a rue de la Rondelle, 67790 Steinbourg<br>SIRET : <span id="f-siret"></span></div><div><b>Hébergeur</b><br><span id="f-host"></span></div></div>
 </div></footer>
 
 <script>
-/* À compléter avant de partager le lien : laisser vide affiche « à compléter ». */
 var CONTACT={phone:"06 14 86 30 73",email:"noahollner@gmail.com",siret:"931 745 012 00019",host:"GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis"};
-function put(id,v,link){var e=document.getElementById(id);if(!e)return;
-  if(v){if(link){var a=document.createElement("a");a.href=link+v;a.textContent=v;e.appendChild(a)}else e.textContent=v}
-  else{e.textContent="à compléter";e.className="todo"}}
+function put(id,v,l){var e=document.getElementById(id);if(!e)return;if(v){if(l){var a=document.createElement("a");a.href=l+v.replace(/\s/g,"");a.textContent=v;e.appendChild(a)}else e.textContent=v}else{e.textContent="à compléter";e.className="todo"}}
 put("c-phone",CONTACT.phone,"tel:");put("c-mail",CONTACT.email,"mailto:");put("f-siret",CONTACT.siret);put("f-host",CONTACT.host);
-if(CONTACT.phone)document.getElementById("c-btn").href="tel:"+CONTACT.phone.replace(/\s/g,"");
+(function(){var d=document.documentElement;d.classList.add("js");
+var h=document.getElementById("hd"),t=document.getElementById("h-tel");
+if(CONTACT.phone){t.href="tel:"+CONTACT.phone.replace(/\s/g,"");t.textContent=CONTACT.phone}
+function sc(){h.classList.toggle("sc",scrollY>8)}sc();addEventListener("scroll",sc,{passive:true});
+var rm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+var els=[].slice.call(document.querySelectorAll(".rv"));
+if(!("IntersectionObserver" in window)||rm){els.forEach(function(e){e.classList.add("in")})}
+else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.12,rootMargin:"0px 0px -40px 0px"});els.forEach(function(e){io.observe(e)})}
+/* démo recherche */
+var sd=document.getElementById("sd"),tx=document.getElementById("sd-t"),full=tx.getAttribute("data-full"),btns=sd.querySelectorAll(".seg button"),user=false;
+function set(v){sd.setAttribute("data-s",v);btns.forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-v")===v)})}
+btns.forEach(function(b){b.addEventListener("click",function(){user=true;sd.classList.add("on");tx.textContent=full;set(b.getAttribute("data-v"))})});
+if(rm){tx.textContent=full;sd.classList.add("on");set("site")}
+else{var i=0;setTimeout(function type(){if(user)return;i++;tx.textContent=full.slice(0,i);if(i<full.length)setTimeout(type,55+Math.random()*40);else{setTimeout(function(){if(!user)sd.classList.add("on")},300);setTimeout(function(){if(!user)set("site")},2600)}},700)}
+})();
 </script>
 </body></html>
