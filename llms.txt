@@ -1,0 +1,18 @@
+# Hollner
+
+> Création de sites web pour artisans, commerces et cabinets, partout en France. Maquette gratuite sous 48 h, sans engagement. Noa Hollner, micro-entrepreneur à Steinbourg (67).
+
+- Page d'accueil : https://noahollner.fr/
+- Contact : 06 14 86 30 73
+- Tarifs : page unique 300 € (tarif de lancement), site vitrine à partir de 800 €, suivi à partir de 40 €/mois
+
+## Exemples de sites (démonstrations fictives, coordonnées inventées)
+- Couvreur, 4 pages : https://noahollner.fr/exemples/couvreur/
+- Barbier, 1 page : https://noahollner.fr/exemples/barbier/
+- Restaurant, 2 pages : https://noahollner.fr/exemples/restaurant/
+- Kinésithérapeute, 3 pages : https://noahollner.fr/exemples/kine/
+- Coach sportif, 1 page : https://noahollner.fr/exemples/coach/
+- Photographe, 2 pages : https://noahollner.fr/exemples/photographe/
+
+## Mentions
+- https://noahollner.fr/mentions-legales.html
