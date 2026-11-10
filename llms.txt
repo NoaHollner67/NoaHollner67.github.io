@@ -45,3 +45,9 @@
 
 ## Outils sur mesure
 - Applications et outils sur mesure : https://noahollner.fr/applications-sur-mesure/
+
+## Guides
+- Combien coûte un site internet pour un artisan en 2026 : https://noahollner.fr/blog/prix-site-internet-artisan/
+- Site internet ou fiche Google pour un artisan : https://noahollner.fr/blog/site-internet-ou-fiche-google-artisan/
+- Que mettre sur le site d'un artisan (checklist) : https://noahollner.fr/blog/que-mettre-sur-le-site-d-un-artisan/
+- Wix, Squarespace ou site sur mesure : https://noahollner.fr/blog/wix-squarespace-ou-site-sur-mesure-artisan/
