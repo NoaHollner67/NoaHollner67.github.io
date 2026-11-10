@@ -3,8 +3,8 @@
 <title>Site web pour couvreurs en Alsace · Hollner</title>
 <meta name="description" content="Création de site web pour couvreurs autour de Saverne et partout en France. Maquette gratuite sous 48 h, devis écrit, site et domaine à votre nom.">
 <link rel="canonical" href="https://noahollner.fr/couvreur/">
-<link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<meta property="og:image" content="https://noahollner.fr/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://noahollner.fr/og.png"><link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:image" content="https://noahollner.fr/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://noahollner.fr/og.png">
 
 <meta name="color-scheme" content="light"><meta name="theme-color" content="#0E2236">
 <meta property="og:title" content="Site web pour couvreurs en Alsace · Hollner"><meta property="og:description" content="Création de site web pour couvreurs autour de Saverne et partout en France. Maquette gratuite sous 48 h, devis écrit, site et domaine à votre nom."><meta property="og:type" content="website"><meta property="og:url" content="https://noahollner.fr/couvreur/">
@@ -1116,6 +1116,16 @@ body.pg .hero{background:linear-gradient(#fff 55%,#F6F8FA);min-height:0!importan
 .pq .chips a:hover,.pq .chips a:focus-visible{background:var(--bouee);border-color:var(--ink);transform:translateY(-1px);outline:0}
 @media(prefers-reduced-motion:reduce){.pq .chips{animation:none;flex-wrap:wrap;width:auto;justify-content:center;padding:0 20px}}
 @media(max-width:700px){.pq .chips a{padding:9px 16px;font-size:14px}}
+/* alignement centre des pages internes */
+.pg .lk2{justify-content:center}
+.pg .sp .w>div>p{text-align:center;max-width:46em;margin-left:auto;margin-right:auto}
+.pg .sp .w>div>ol{list-style:none;counter-reset:st;padding:0!important;display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px!important;margin:0}
+.pg .sp .w>div>ol>li{counter-increment:st;padding:20px;border:1px solid var(--line);border-radius:14px;background:#fff;font-size:15px;line-height:23px;color:var(--muted)}
+.pg .sp .w>div>ol>li:before{content:"Étape " counter(st);display:block;font:500 11px/16px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--rhin);margin-bottom:8px}
+.pg .sp .w>div>ol>li b{display:block;color:var(--ink);font:700 18px/1.2 var(--display);margin-bottom:6px}
+@media(max-width:1000px){.pg .sp .w>div>ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.pg .sp .w>div>ol{grid-template-columns:1fr}}
+.who .w{grid-template-columns:1fr;text-align:center;justify-items:center;gap:14px}.who .lab{justify-content:center}.who p{margin-left:auto;margin-right:auto}.who .wb{justify-content:center}
 </style><style>
 .ex{display:block;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 18px 40px rgba(14,34,54,.14)}
 .ex .xb{display:flex}.ex img{display:block;width:100%;height:auto}
