@@ -45,6 +45,10 @@
 
 ## Outils sur mesure
 - Applications et outils sur mesure : https://noahollner.fr/applications-sur-mesure/
+- Démonstration, devis en ligne : https://noahollner.fr/outils/devis/
+- Démonstration, planning de chantiers : https://noahollner.fr/outils/planning/
+- Démonstration, prise de rendez-vous : https://noahollner.fr/outils/rdv/
+- Démonstration, application mobile installable : https://noahollner.fr/outils/carnet/
 
 ## Guides
 - Combien coûte un site internet pour un artisan en 2026 : https://noahollner.fr/blog/prix-site-internet-artisan/
