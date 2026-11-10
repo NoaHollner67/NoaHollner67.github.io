@@ -1,0 +1,106 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Démo : Devis Express, un outil de devis sur mesure · Hollner</title>
+<meta name="description" content="Démonstration d'un outil de devis en ligne pour artisan : lignes, TVA, remise, acompte, impression en PDF. Données fictives.">
+<link rel="canonical" href="https://noahollner.fr/outils/devis/"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Devis Express, démonstration d'un outil de devis · Hollner"><meta property="og:description" content="Un outil de devis en ligne pour artisan, jouable sur la page. Données fictives."><meta property="og:image" content="https://noahollner.fr/og.png"><meta name="theme-color" content="#0E2236">
+<link rel="stylesheet" href="/outils/demo.css">
+<style>
+.app{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:20px;max-width:1280px;margin:0 auto;padding:20px clamp(14px,3vw,32px) 48px;align-items:start}
+@media(max-width:980px){.app{grid-template-columns:1fr}}
+.pnl{padding:20px}.pnl+.pnl{margin-top:14px}
+.pnl h2{font-size:17px;margin-bottom:14px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.g2 label{margin-top:0}
+.fld{margin-bottom:10px}
+.ln{display:grid;grid-template-columns:1fr 64px 84px 28px;gap:8px;align-items:end;padding:10px 0;border-top:1px solid var(--line)}
+.ln:first-of-type{border-top:0}
+.ln .d{grid-column:1/-1}
+.ln label{font-size:11px;color:var(--muted);margin-bottom:2px}
+.ln .x{height:38px;border:0;background:transparent;color:#B33;font-size:20px;line-height:1;border-radius:8px}.ln .x:hover{background:#FDECEC}
+.tot{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.saved{list-style:none;margin:0;padding:0}.saved li{display:flex;align-items:center;gap:8px;padding:10px 0;border-top:1px solid var(--line)}.saved li:first-child{border-top:0}.saved b{font-family:var(--d)}.saved small{color:var(--muted);display:block}.saved .sp{flex:1;min-width:0}
+.empty{color:var(--muted);font-size:14px}
+/* document */
+.docw{position:sticky;top:12px}
+@media(max-width:980px){.docw{position:static}}
+.doc{background:#fff;border:1px solid var(--line);border-radius:6px;box-shadow:0 14px 40px rgba(14,34,54,.1);padding:clamp(20px,3.4vw,44px);font-size:13.5px;line-height:1.5;color:#1B2B3B}
+.doc .hd{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.doc .co b{font:700 19px/1.2 var(--d);display:block;letter-spacing:-.02em}
+.doc .co{color:#4A5B6B}
+.doc .ti{text-align:right}.doc .ti h3{font:700 26px/1 var(--d);letter-spacing:-.03em;color:var(--ink)}.doc .ti span{display:block;color:#4A5B6B;margin-top:4px}
+.doc .cl{background:#F3F6F8;border-radius:8px;padding:12px 14px;margin-bottom:22px}.doc .cl b{display:block}
+.doc table{width:100%;border-collapse:collapse}
+.doc th{font:500 10.5px/16px var(--m);text-transform:uppercase;letter-spacing:.08em;text-align:right;color:#4A5B6B;padding:8px 6px;border-bottom:2px solid var(--ink)}
+.doc th:first-child,.doc td:first-child{text-align:left}
+.doc td{padding:9px 6px;border-bottom:1px solid #E4E9EE;text-align:right;vertical-align:top;font-variant-numeric:tabular-nums}
+.doc td:first-child{white-space:pre-line}
+.sum{margin:18px 0 0 auto;width:min(100%,300px)}
+.sum div{display:flex;justify-content:space-between;padding:5px 0;font-variant-numeric:tabular-nums}
+.sum .t{border-top:2px solid var(--ink);margin-top:6px;padding-top:10px;font:700 18px/1.2 var(--d)}
+.sum .a{background:#FFF6CC;border-radius:8px;padding:8px 10px;margin-top:8px;font-weight:600}
+.doc .ft{margin-top:26px;padding-top:14px;border-top:1px solid #E4E9EE;color:#4A5B6B;font-size:12px}
+.doc .sg{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}.doc .sg div{border:1px dashed #B9C8D3;border-radius:8px;height:74px;padding:8px 10px;color:#6B7B8A;font-size:12px}
+.fict{font:500 10.5px/16px var(--m);letter-spacing:.08em;text-transform:uppercase;color:#8A6A00;background:#FFF6CC;display:inline-block;padding:2px 8px;border-radius:99px;margin-bottom:10px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;opacity:0;transition:.25s;pointer-events:none;z-index:9;font-size:14px}.toast.on{opacity:1;transform:translateX(-50%)}
+@media print{body{background:#fff}.dbar,.app>div:first-child,.toast,.noprint{display:none!important}.app{display:block;padding:0}.docw{position:static}.doc{border:0;box-shadow:none;padding:0}.fict{display:none}}
+</style></head><body>
+<div class="dbar"><span class="tg">Démonstration</span><span class="tx">Entreprise et client fictifs. Vos données restent dans ce navigateur.</span><span class="sp"></span><button id="rs" type="button">Réinitialiser</button><a href="/applications-sur-mesure/">← Tous les outils</a><a class="cta" href="/#contact">Je veux le même pour mon activité</a></div>
+<div class="app">
+ <div>
+  <section class="card pnl"><h2>Client et devis</h2>
+   <div class="g2"><div class="fld"><label for="cn">Client</label><input id="cn"></div><div class="fld"><label for="cv">Ville</label><input id="cv"></div></div>
+   <div class="fld"><label for="ob">Objet des travaux</label><input id="ob"></div>
+   <div class="g2"><div class="fld"><label for="dt">Date</label><input id="dt" type="date"></div><div class="fld"><label for="va">Validité (jours)</label><input id="va" type="number" min="1"></div></div>
+  </section>
+  <section class="card pnl"><h2>Lignes du devis</h2><div id="lines"></div><button class="btn g sm" id="add" type="button" style="margin-top:6px">+ Ajouter une ligne</button></section>
+  <section class="card pnl"><h2>Totaux</h2>
+   <div class="tot"><div class="fld"><label for="tv">TVA</label><select id="tv"><option value="10">10 % (rénovation)</option><option value="20">20 %</option><option value="5.5">5,5 % (énergie)</option><option value="0">Sans TVA</option></select></div><div class="fld"><label for="rm">Remise (%)</label><input id="rm" type="number" min="0" max="100" step="1"></div></div>
+   <div class="fld"><label for="ac">Acompte à la commande (%)</label><input id="ac" type="number" min="0" max="100" step="5"></div>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px"><button class="btn y" id="pr" type="button">Imprimer / PDF</button><button class="btn" id="sv" type="button">Enregistrer</button><button class="btn g" id="nw" type="button">Nouveau</button></div>
+  </section>
+  <section class="card pnl"><h2>Devis enregistrés</h2><ul class="saved" id="sl"></ul></section>
+ </div>
+ <div class="docw"><div class="noprint"><span class="fict">Aperçu du document · exemple fictif</span></div>
+  <article class="doc" id="doc" aria-live="polite"></article></div>
+</div>
+<div class="toast" id="ts" role="status"></div>
+<script>
+(function(){
+var KEY="hollner-demo-devis-v1",eur=new Intl.NumberFormat("fr-FR",{style:"currency",currency:"EUR"});
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function today(){var d=new Date();return d.toISOString().slice(0,10)}
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||{list:[],cur:null}}catch(e){return{list:[],cur:null}}}
+function store(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+var S=load();
+function sample(n){return{id:null,num:"DEV-"+new Date().getFullYear()+"-"+String(n).padStart(3,"0"),cl:"M. et Mme Dupont",ville:"Saverne",ob:"Remplacement de 12 m² de toiture et zinguerie",dt:today(),va:30,tv:10,rm:0,ac:30,
+ lines:[{d:"Dépose de l'ancienne couverture\n12 m²",q:12,p:38},{d:"Fourniture et pose de tuiles en terre cuite",q:12,p:92},{d:"Gouttière zinc, pose comprise",q:8,p:46},{d:"Évacuation et mise en décharge",q:1,p:180}]}}
+var D=S.cur||sample(S.list.length+1);
+function bind(){$("cn").value=D.cl;$("cv").value=D.ville;$("ob").value=D.ob;$("dt").value=D.dt;$("va").value=D.va;$("tv").value=String(D.tv);$("rm").value=D.rm;$("ac").value=D.ac;lines()}
+function lines(){var h="";D.lines.forEach(function(l,i){h+='<div class="ln"><div class="d"><label>Désignation</label><input data-i="'+i+'" data-k="d" value="'+esc(l.d.split("\n")[0])+'"></div><div><label>Qté</label><input type="number" step="any" min="0" data-i="'+i+'" data-k="q" value="'+l.q+'"></div><div><label>Prix HT</label><input type="number" step="any" min="0" data-i="'+i+'" data-k="p" value="'+l.p+'"></div><button class="x" data-del="'+i+'" type="button" aria-label="Supprimer la ligne">×</button></div>'});$("lines").innerHTML=h}
+function calc(){var ht=0;D.lines.forEach(function(l){ht+=(+l.q||0)*(+l.p||0)});var rem=ht*(+D.rm||0)/100,net=ht-rem,tva=net*(+D.tv||0)/100,ttc=net+tva,ac=ttc*(+D.ac||0)/100;return{ht:ht,rem:rem,net:net,tva:tva,ttc:ttc,ac:ac}}
+function fd(s){var d=new Date(s+"T12:00:00");return isNaN(d)?"":d.toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"})}
+function render(){var c=calc(),rows="";D.lines.forEach(function(l){var t=(+l.q||0)*(+l.p||0);rows+="<tr><td>"+esc(l.d)+"</td><td>"+(+l.q||0).toLocaleString("fr-FR")+"</td><td>"+eur.format(+l.p||0)+"</td><td>"+eur.format(t)+"</td></tr>"});
+ var val=new Date(D.dt+"T12:00:00");val.setDate(val.getDate()+(+D.va||0));
+ $("doc").innerHTML='<div class="hd"><div class="co"><b>Toitures Martin</b>12 rue des Tuiliers<br>67700 Saverne<br>Entreprise fictive · SIRET 000 000 000 00000</div><div class="ti"><h3>DEVIS</h3><span>'+esc(D.num)+'</span><span>'+fd(D.dt)+'</span></div></div>'
+ +'<div class="cl"><span class="lab">Client</span><b>'+esc(D.cl||"—")+'</b>'+esc(D.ville)+'<br><span style="color:#4A5B6B">'+esc(D.ob)+'</span></div>'
+ +'<table><thead><tr><th>Désignation</th><th>Qté</th><th>Prix HT</th><th>Total HT</th></tr></thead><tbody>'+rows+'</tbody></table>'
+ +'<div class="sum"><div><span>Total HT</span><span>'+eur.format(c.ht)+'</span></div>'+(c.rem?'<div><span>Remise '+(+D.rm)+' %</span><span>− '+eur.format(c.rem)+'</span></div>':'')+'<div><span>TVA '+String(D.tv).replace(".",",")+' %</span><span>'+eur.format(c.tva)+'</span></div><div class="t"><span>Total TTC</span><span>'+eur.format(c.ttc)+'</span></div>'+(c.ac?'<div class="a"><span>Acompte '+(+D.ac)+' %</span><span>'+eur.format(c.ac)+'</span></div>':'')+'</div>'
+ +'<div class="sg"><div>Bon pour accord, date et signature du client</div><div>Signature de l\'entreprise</div></div>'
+ +'<div class="ft">Devis valable jusqu\'au '+val.toLocaleDateString("fr-FR")+'. Document de démonstration : entreprise, client et prix fictifs.</div>'}
+function list(){var h="";S.list.forEach(function(d,i){h+='<li><div class="sp"><b>'+esc(d.num)+'</b><small>'+esc(d.cl)+' · '+eur.format(totalOf(d))+'</small></div><button class="btn g sm" data-open="'+i+'" type="button">Ouvrir</button><button class="btn g sm" data-rm="'+i+'" type="button" aria-label="Supprimer">×</button></li>'});$("sl").innerHTML=h||'<li class="empty">Aucun devis enregistré. Cliquez sur « Enregistrer ».</li>'}
+function totalOf(d){var t=0;d.lines.forEach(function(l){t+=(+l.q||0)*(+l.p||0)});t=t*(1-(+d.rm||0)/100);return t*(1+(+d.tv||0)/100)}
+function toast(m){var t=$("ts");t.textContent=m;t.classList.add("on");setTimeout(function(){t.classList.remove("on")},1800)}
+function sync(){D.cl=$("cn").value;D.ville=$("cv").value;D.ob=$("ob").value;D.dt=$("dt").value||today();D.va=$("va").value;D.tv=$("tv").value;D.rm=$("rm").value;D.ac=$("ac").value;S.cur=D;store();render()}
+["cn","cv","ob","dt","va","tv","rm","ac"].forEach(function(i){$(i).addEventListener("input",sync)});
+$("lines").addEventListener("input",function(e){var t=e.target,i=t.getAttribute("data-i");if(i==null)return;var k=t.getAttribute("data-k");D.lines[i][k]=(k==="d")?t.value:t.value;S.cur=D;store();render()});
+$("lines").addEventListener("click",function(e){var i=e.target.getAttribute("data-del");if(i==null)return;D.lines.splice(+i,1);lines();sync()});
+$("add").onclick=function(){D.lines.push({d:"Nouvelle prestation",q:1,p:0});lines();sync()};
+$("pr").onclick=function(){window.print()};
+$("sv").onclick=function(){sync();var c=JSON.parse(JSON.stringify(D));var k=S.list.findIndex(function(x){return x.num===c.num});if(k>-1)S.list[k]=c;else S.list.unshift(c);store();list();toast("Devis "+c.num+" enregistré")};
+$("nw").onclick=function(){D=sample(S.list.length+1);D.cl="";D.ville="";D.ob="";D.lines=[{d:"",q:1,p:0}];S.cur=D;store();bind();render()};
+$("sl").addEventListener("click",function(e){var o=e.target.getAttribute("data-open"),r=e.target.getAttribute("data-rm");if(o!=null){D=JSON.parse(JSON.stringify(S.list[+o]));S.cur=D;store();bind();render();toast("Devis ouvert")}if(r!=null){S.list.splice(+r,1);store();list()}});
+$("rs").onclick=function(){try{localStorage.removeItem(KEY)}catch(e){}S={list:[],cur:null};D=sample(1);bind();render();list();toast("Démonstration réinitialisée")};
+bind();render();list();
+})();
+</script></body></html>

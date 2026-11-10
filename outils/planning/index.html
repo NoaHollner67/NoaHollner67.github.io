@@ -1,0 +1,99 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Démo : Planning de chantiers, un outil sur mesure · Hollner</title>
+<meta name="description" content="Démonstration d'un planning de chantiers pour artisan : tableau par statut, vue semaine, ajout et déplacement des chantiers. Données fictives.">
+<link rel="canonical" href="https://noahollner.fr/outils/planning/"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="Planning de chantiers, démonstration · Hollner"><meta property="og:description" content="Un planning de chantiers pour artisan, jouable sur la page. Données fictives."><meta property="og:image" content="https://noahollner.fr/og.png"><meta name="theme-color" content="#0E2236">
+<link rel="stylesheet" href="/outils/demo.css">
+<style>
+.wrap{max-width:1280px;margin:0 auto;padding:20px clamp(14px,3vw,32px) 56px}
+.top{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.top h1{font-size:clamp(24px,3vw,32px)}.top p{margin:4px 0 0;color:var(--muted)}
+.kp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.kp div{padding:14px 16px}.kp b{display:block;font:700 28px/1.1 var(--d);letter-spacing:-.03em}.kp span{color:var(--muted);font-size:13px}
+.kp .w b{color:#B33}
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.seg{display:inline-flex;background:#E4EBF0;border-radius:10px;padding:3px}.seg button{border:0;background:transparent;border-radius:8px;padding:7px 14px;font-weight:600;color:var(--muted)}.seg button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(14,34,54,.15)}
+.bar .sp{flex:1}
+.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:start}
+@media(max-width:860px){.board{grid-template-columns:1fr}.kp b{font-size:22px}}
+.col{background:#E9EFF3;border-radius:16px;padding:12px;min-height:160px}
+.col.ov{outline:2px dashed var(--rhin);outline-offset:-4px}
+.col h2{font-size:14px;display:flex;justify-content:space-between;align-items:center;padding:2px 4px 10px;font-family:var(--s);font-weight:600;letter-spacing:0}
+.col h2 em{font-style:normal;background:#fff;border-radius:99px;padding:1px 9px;font-size:12px;color:var(--muted)}
+.ch{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;cursor:grab;box-shadow:0 1px 2px rgba(14,34,54,.05)}
+.ch:active{cursor:grabbing}.ch.dr{opacity:.4}
+.ch b{font:700 15px/1.25 var(--d);letter-spacing:-.01em;display:block}.ch .m{color:var(--muted);font-size:13px;margin-top:2px}
+.ch .r{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.tag{font:500 11px/16px var(--m);letter-spacing:.04em;padding:2px 8px;border-radius:99px;background:#EAF2F6;color:#16506B}
+.tag.late{background:#FDECEC;color:#A02222}.tag.ok{background:#E6F4EC;color:#1E6B45}
+.av{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font:600 10px/1 var(--s)}
+.av.b{background:var(--rhin)}.av.c{background:#9A6B00}
+.mv{margin-left:auto;display:flex;gap:4px}.mv button{border:1px solid var(--line);background:#fff;border-radius:8px;width:30px;height:30px;line-height:1}.mv button:hover{border-color:var(--ink)}
+.wk{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+@media(max-width:980px){.wk{grid-template-columns:1fr}}
+.dy{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px;min-height:150px}
+.dy.t{border-color:var(--rhin);box-shadow:0 0 0 2px rgba(31,106,138,.18)}
+.dy h3{font:600 13px/1.2 var(--s);letter-spacing:0;margin-bottom:8px;color:var(--muted);text-transform:capitalize}.dy.t h3{color:var(--rhin)}
+.ev{border-left:4px solid var(--rhin);background:#F3F8FB;border-radius:8px;padding:7px 9px;margin-bottom:8px;font-size:13px;line-height:1.35}.ev.c1{border-color:var(--bouee);background:#FFF9DC}.ev.c2{border-color:#1E7B4F;background:#EDF7F1}.ev b{display:block;font-family:var(--d)}
+.empty{color:#8394A4;font-size:13px}
+dialog{border:0;border-radius:18px;padding:0;width:min(440px,92vw);box-shadow:0 30px 80px rgba(14,34,54,.35)}dialog::backdrop{background:rgba(14,34,54,.5)}
+dialog form{padding:22px}dialog h2{margin-bottom:14px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.fld{margin-bottom:10px}
+</style></head><body>
+<div class="dbar"><span class="tg">Démonstration</span><span class="tx">Chantiers et clients fictifs. Vos modifications restent dans ce navigateur.</span><span class="sp"></span><button id="rs" type="button">Réinitialiser</button><a href="/applications-sur-mesure/">← Tous les outils</a><a class="cta" href="/#contact">Je veux le même pour mon activité</a></div>
+<div class="wrap">
+ <div class="top"><div><h1>Planning de chantiers</h1><p>Toitures Martin · exemple fictif</p></div><button class="btn y" id="nw" type="button">+ Nouveau chantier</button></div>
+ <div class="kp"><div class="card"><b id="k1">0</b><span>chantiers cette semaine</span></div><div class="card"><b id="k2">0</b><span>en cours</span></div><div class="card w"><b id="k3">0</b><span>en retard</span></div></div>
+ <div class="bar"><div class="seg" role="group" aria-label="Affichage"><button type="button" id="vb" aria-pressed="true">Tableau</button><button type="button" id="vw" aria-pressed="false">Semaine</button></div><span class="sp"></span><span class="lab">Glissez les cartes ou utilisez les flèches</span></div>
+ <div id="view"></div>
+</div>
+<dialog id="dg"><form method="dialog" id="fm"><h2>Nouveau chantier</h2>
+ <div class="fld"><label for="f1">Client</label><input id="f1" required placeholder="Ex. M. Weber"></div>
+ <div class="fld"><label for="f2">Travaux</label><input id="f2" required placeholder="Ex. Réparation de fuite en toiture"></div>
+ <div class="row"><div class="fld"><label for="f3">Ville</label><input id="f3" placeholder="Saverne"></div><div class="fld"><label for="f4">Date de début</label><input id="f4" type="date" required></div></div>
+ <div class="row"><div class="fld"><label for="f5">Durée (jours)</label><input id="f5" type="number" min="1" max="30" value="1"></div><div class="fld"><label for="f6">Équipe</label><select id="f6"><option>Marc</option><option>Léa</option><option>Karim</option></select></div></div>
+ <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:6px"><button class="btn g" value="cancel" type="submit" formnovalidate>Annuler</button><button class="btn y" id="ok" type="submit" value="ok">Ajouter</button></div></form></dialog>
+<script>
+(function(){
+var KEY="hollner-demo-planning-v1",ST=[["todo","À planifier"],["doing","En cours"],["done","Terminés"]],V="b";
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function iso(d){var z=new Date(d.getTime()-d.getTimezoneOffset()*6e4);return z.toISOString().slice(0,10)}
+function add(n){var d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+n);return iso(d)}
+function seed(){return[
+ {id:1,c:"M. et Mme Dupont",t:"Remplacement de toiture, 12 m²",v:"Saverne",s:"doing",d:add(-1),n:3,e:"Marc"},
+ {id:2,c:"Boulangerie Keller",t:"Réparation de gouttières",v:"Marmoutier",s:"todo",d:add(1),n:1,e:"Léa"},
+ {id:3,c:"Mme Schmitt",t:"Pose de fenêtres de toit (2)",v:"Wasselonne",s:"todo",d:add(3),n:2,e:"Karim"},
+ {id:4,c:"M. Weber",t:"Recherche de fuite et réparation",v:"Haguenau",s:"doing",d:add(-6),n:2,e:"Léa"},
+ {id:5,c:"Copropriété Les Tilleuls",t:"Nettoyage et traitement de toiture",v:"Sarre-Union",s:"done",d:add(-9),n:2,e:"Marc"},
+ {id:6,c:"M. Roth",t:"Zinguerie et débords de toit",v:"Bouxwiller",s:"done",d:add(-4),n:1,e:"Karim"},
+ {id:7,c:"Mme Hoffmann",t:"Isolation de combles perdus",v:"Saverne",s:"todo",d:add(8),n:3,e:"Marc"}]}
+var L;try{L=JSON.parse(localStorage.getItem(KEY))}catch(e){}if(!L||!L.length)L=seed();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(L))}catch(e){}}
+function end(c){var d=new Date(c.d+"T12:00:00");d.setDate(d.getDate()+c.n-1);return iso(d)}
+function late(c){return c.s!=="done"&&end(c)<add(0)}
+function fd(s){return new Date(s+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"short"})}
+function ini(e){return e[0]}
+function mon(){var d=new Date();d.setHours(12,0,0,0);var w=(d.getDay()+6)%7;d.setDate(d.getDate()-w);return d}
+function card(c){var cl=c.e==="Léa"?"b":c.e==="Karim"?"c":"";var st=ST.findIndex(function(x){return x[0]===c.s});
+ return '<article class="ch" draggable="true" data-id="'+c.id+'"><b>'+esc(c.c)+'</b><div class="m">'+esc(c.t)+'</div><div class="r">'+(c.v&&c.v!=="—"?'<span class="tag">'+esc(c.v)+'</span>':'')+'<span class="tag'+(late(c)?' late':c.s==="done"?' ok':'')+'">'+(late(c)?'En retard · ':'')+fd(c.d)+(c.n>1?' → '+fd(end(c)):'')+'</span><span class="av '+cl+'" title="'+esc(c.e)+'">'+ini(c.e)+'</span><span class="mv">'+(st>0?'<button type="button" data-mv="-1" aria-label="Déplacer vers la gauche">←</button>':'')+(st<2?'<button type="button" data-mv="1" aria-label="Déplacer vers la droite">→</button>':'')+'</span></div></article>'}
+function board(){return '<div class="board">'+ST.map(function(s){var a=L.filter(function(c){return c.s===s[0]});return '<section class="col" data-col="'+s[0]+'" aria-label="'+s[1]+'"><h2>'+s[1]+' <em>'+a.length+'</em></h2>'+a.map(card).join("")+(a.length?"":'<p class="empty">Aucun chantier</p>')+'</section>'}).join("")+'</div>'}
+function week(){var m=mon(),h='<div class="wk">',t=add(0);for(var i=0;i<7;i++){var d=new Date(m);d.setDate(m.getDate()+i);var k=iso(d);var ev=L.filter(function(c){return c.d<=k&&end(c)>=k&&c.s!=="done"||c.s==="done"&&c.d<=k&&end(c)>=k});
+ h+='<div class="dy'+(k===t?' t':'')+'"><h3>'+d.toLocaleDateString("fr-FR",{weekday:"long",day:"numeric"})+'</h3>'+(ev.map(function(c,j){return '<div class="ev '+(c.s==="done"?"c2":c.e==="Léa"?"c1":"")+'"><b>'+esc(c.c)+'</b>'+esc(c.t)+'<br><span style="color:#4F6173">'+esc(c.e)+' · '+esc(c.v)+'</span></div>'}).join("")||'<p class="empty">Libre</p>')+'</div>'}return h+'</div>'}
+function kpi(){var m=mon(),a=iso(m),z=new Date(m);z.setDate(z.getDate()+6);var b=iso(z);$("k1").textContent=L.filter(function(c){return c.d<=b&&end(c)>=a}).length;$("k2").textContent=L.filter(function(c){return c.s==="doing"}).length;$("k3").textContent=L.filter(late).length}
+function draw(){$("view").innerHTML=V==="b"?board():week();kpi()}
+$("vb").onclick=function(){V="b";$("vb").setAttribute("aria-pressed","true");$("vw").setAttribute("aria-pressed","false");draw()};
+$("vw").onclick=function(){V="w";$("vw").setAttribute("aria-pressed","true");$("vb").setAttribute("aria-pressed","false");draw()};
+function mv(id,dir){var c=L.find(function(x){return x.id==id});var i=ST.findIndex(function(s){return s[0]===c.s})+dir;if(i<0||i>2)return;c.s=ST[i][0];save();draw()}
+$("view").addEventListener("click",function(e){var b=e.target.closest("[data-mv]");if(!b)return;mv(b.closest(".ch").getAttribute("data-id"),+b.getAttribute("data-mv"))});
+var drag=null;
+$("view").addEventListener("dragstart",function(e){var c=e.target.closest&&e.target.closest(".ch");if(!c)return;drag=c.getAttribute("data-id");c.classList.add("dr");try{e.dataTransfer.setData("text/plain",drag);e.dataTransfer.effectAllowed="move"}catch(x){}});
+$("view").addEventListener("dragend",function(e){drag=null;draw()});
+$("view").addEventListener("dragover",function(e){var c=e.target.closest(".col");if(!c||!drag)return;e.preventDefault();c.classList.add("ov")});
+$("view").addEventListener("dragleave",function(e){var c=e.target.closest(".col");if(c)c.classList.remove("ov")});
+$("view").addEventListener("drop",function(e){var c=e.target.closest(".col");if(!c||!drag)return;e.preventDefault();var x=L.find(function(y){return y.id==drag});x.s=c.getAttribute("data-col");save();drag=null;draw()});
+$("nw").onclick=function(){$("fm").reset();$("f4").value=add(1);$("dg").showModal()};
+$("fm").addEventListener("submit",function(e){var v=e.submitter&&e.submitter.value;if(v!=="ok")return;L.unshift({id:Date.now(),c:$("f1").value.trim(),t:$("f2").value.trim(),v:$("f3").value.trim(),s:"todo",d:$("f4").value,n:Math.max(1,+$("f5").value||1),e:$("f6").value});save();draw()});
+$("rs").onclick=function(){try{localStorage.removeItem(KEY)}catch(e){}L=seed();draw()};
+draw();
+})();
+</script></body></html>

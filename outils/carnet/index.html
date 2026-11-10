@@ -1,0 +1,106 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Démo : application mobile installable, Carnet de chantier · Hollner</title>
+<meta name="description" content="Démonstration d'une application installable sur téléphone pour artisan : notes, photos et tâches par chantier, qui fonctionne même sans réseau. Données fictives.">
+<link rel="canonical" href="https://noahollner.fr/outils/carnet/"><link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/outils/carnet/manifest.webmanifest"><link rel="apple-touch-icon" href="/outils/carnet/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Carnet">
+<meta property="og:title" content="Carnet de chantier, application installable, démonstration · Hollner"><meta property="og:description" content="Une application mobile installable pour artisan, jouable sur la page. Données fictives."><meta property="og:image" content="https://noahollner.fr/og.png"><meta name="theme-color" content="#0E2236">
+<link rel="stylesheet" href="/outils/demo.css">
+<style>
+[hidden]{display:none!important}body{background:#DCE5EB}
+.dbar{position:relative;z-index:5}
+.stage{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:clamp(20px,5vw,72px);max-width:1000px;margin:0 auto;padding:28px clamp(14px,3vw,32px) 40px;align-items:start}
+@media(max-width:860px){.stage{grid-template-columns:1fr;padding:0}.side{display:none}.dbar .hid{display:none}}
+.side{position:sticky;top:20px;padding-top:24px}.side h1{font-size:clamp(28px,3.4vw,40px);line-height:1.05;margin-bottom:14px}.side p{color:#3B4D5E;font-size:17px;line-height:1.55;margin:0 0 14px}.side ul{margin:0 0 18px;padding-left:20px;color:#3B4D5E}.side li{margin-bottom:6px}
+.side .st{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.phone{width:100%;max-width:400px;margin:0 auto;background:#0E2236;border-radius:40px;padding:10px;box-shadow:0 30px 70px rgba(14,34,54,.35)}
+@media(max-width:860px){.phone{max-width:none;border-radius:0;padding:0;box-shadow:none;background:transparent}}
+.app{background:#F3F6F8;border-radius:32px;height:min(780px,calc(100vh - 110px));min-height:560px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+@media(max-width:860px){body{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}.stage{flex:1;min-height:0;width:100%;max-width:none;margin:0}.phone{height:100%;max-width:none;width:100%;margin:0}.app{border-radius:0;height:100%;min-height:0}}
+.top{background:var(--ink);color:#fff;padding:16px 18px 14px;flex:none}
+.top .r{display:flex;align-items:center;gap:10px}.top h2{font:700 21px/1.1 var(--d);flex:1;letter-spacing:-.02em;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.top .sub{color:#9FB3C2;font-size:13px;margin-top:3px}
+.ib{border:0;background:rgba(255,255,255,.12);color:#fff;border-radius:12px;width:38px;height:38px;font-size:20px;line-height:1;flex:none;display:grid;place-items:center}.ib:hover{background:rgba(255,255,255,.2)}
+.body{flex:1;overflow:auto;padding:14px 14px 90px;-webkit-overflow-scrolling:touch}
+.badge{display:none;margin:0 0 12px;background:#FFF6CC;border:1px solid #EAD27A;color:#6B5400;border-radius:12px;padding:9px 12px;font-size:13px}.badge.on{display:block}
+.ins{display:none;margin:0 0 12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:13.5px}.ins.on{display:block}.ins b{display:block;margin-bottom:2px}.ins .b{display:flex;gap:8px;margin-top:10px}
+.ch{display:block;width:100%;text-align:left;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:10px}.ch:active{background:#F8FAFB}
+.ch b{display:block;font:700 16px/1.25 var(--d);letter-spacing:-.01em}.ch span{color:var(--muted);font-size:13px}
+.pb{height:6px;border-radius:3px;background:#E4EBF0;margin-top:10px;overflow:hidden}.pb i{display:block;height:100%;background:var(--ok);border-radius:3px}
+.ch .m{display:flex;justify-content:space-between;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.fab{position:absolute;right:16px;bottom:16px;border:0;background:var(--bouee);color:var(--ink);font:700 15px var(--s);border-radius:16px;padding:14px 18px;box-shadow:0 10px 26px rgba(14,34,54,.3)}
+.tabs{display:flex;background:#E4EBF0;border-radius:12px;padding:3px;margin-bottom:12px}.tabs button{flex:1;border:0;background:transparent;border-radius:10px;padding:9px 4px;font-weight:600;font-size:14px;color:var(--muted)}.tabs button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(14,34,54,.15)}
+.nt{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px}.nt small{display:block;color:var(--muted);font:500 11px var(--m);letter-spacing:.04em;margin-bottom:4px}
+.add{display:flex;gap:8px;margin-bottom:12px}.add textarea{resize:none;height:46px}
+.ph{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.ph button{padding:0;border:0;border-radius:10px;overflow:hidden;aspect-ratio:1;background:#DCE5EB}.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.cam{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:2px dashed #B9C8D3;background:#fff;border-radius:14px;padding:16px;font-weight:600;margin-bottom:12px;color:var(--ink)}
+.tk{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px;width:100%;text-align:left}
+.tk i{width:24px;height:24px;border-radius:8px;border:2px solid #9AA8B5;flex:none;display:grid;place-items:center;color:#fff;font-style:normal;font-size:15px;line-height:1}.tk.d i{background:var(--ok);border-color:var(--ok)}.tk.d span{color:#8394A4;text-decoration:line-through}
+.empty{color:var(--muted);text-align:center;padding:24px 10px;font-size:14px}
+.act{display:flex;gap:8px;margin-top:14px}.act .btn{flex:1}
+.vw{position:absolute;inset:0;background:rgba(10,20,32,.94);display:none;flex-direction:column;align-items:center;justify-content:center;padding:16px;z-index:5}.vw.on{display:flex}.vw img{max-width:100%;max-height:78%;border-radius:12px}.vw .btn{margin-top:14px}
+dialog{border:0;border-radius:18px;padding:0;width:min(380px,92vw);box-shadow:0 30px 80px rgba(14,34,54,.35)}dialog::backdrop{background:rgba(14,34,54,.5)}dialog form{padding:20px}dialog h3{margin-bottom:12px;font-size:18px}
+.rep{display:none}
+@media print{body{background:#fff}.dbar,.stage{display:none!important}.rep{display:block;padding:0;font-size:12.5px;color:#1B2B3B}.rep h1{font-size:22px;margin-bottom:4px}.rep h2{font-size:14px;margin:16px 0 6px;border-bottom:1px solid #ccc;padding-bottom:3px}.rep img{width:31%;margin:0 1% 8px 0;border-radius:6px}.rep li{margin-bottom:3px}}
+</style></head><body>
+<div class="dbar"><span class="tg">Démonstration</span><span class="tx hid">Application installable. Chantiers fictifs, données stockées sur votre appareil.</span><span class="sp"></span><button id="rs" type="button">Réinitialiser</button><a href="/applications-sur-mesure/">← Tous les outils</a><a class="cta hid" href="/#contact">Je veux la même pour mon activité</a></div>
+<div class="stage">
+ <aside class="side"><span class="lab">Application mobile installable</span><h1>Carnet de chantier</h1>
+  <p>Notes, photos et tâches par chantier, saisies sur place avec le téléphone. Cela fonctionne aussi sans réseau, et les informations restent sur l'appareil.</p>
+  <ul><li>S'installe depuis le navigateur, sans boutique d'applications</li><li>Prise de photos avec l'appareil du téléphone</li><li>Compte rendu prêt à imprimer ou à enregistrer en PDF</li></ul>
+  <div class="st"><button class="btn y" id="inst2" type="button" hidden>Installer l'application</button><a class="btn g" href="/#contact">Je veux la même pour mon activité</a></div>
+  <p style="font-size:14px;margin-top:18px">Sur téléphone : ouvrez cette page, puis « Ajouter à l'écran d'accueil ».</p></aside>
+ <div class="phone"><div class="app" id="app"></div></div>
+</div>
+<div class="rep" id="rep"></div>
+<script>
+(function(){
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+var DB="hollner-carnet",STO="s",S,view={n:"list",id:null,tab:"notes"},defer=null;
+function idb(){return new Promise(function(ok,ko){var r=indexedDB.open(DB,1);r.onupgradeneeded=function(){r.result.createObjectStore(STO)};r.onsuccess=function(){ok(r.result)};r.onerror=function(){ko(r.error)}})}
+function get(){return idb().then(function(d){return new Promise(function(ok){var q=d.transaction(STO).objectStore(STO).get("state");q.onsuccess=function(){ok(q.result)};q.onerror=function(){ok(null)}})}).catch(function(){return null})}
+function put(){return idb().then(function(d){d.transaction(STO,"readwrite").objectStore(STO).put(S,"state")}).catch(function(){})}
+function dt(o){var d=new Date(Date.now()-(o||0)*6e4);return d.toISOString()}
+function seed(){return{ch:[
+ {id:1,n:"Toiture Dupont",v:"Saverne",notes:[{t:dt(1500),x:"Dépose de la couverture terminée sur la face sud. Liteaux en bon état."},{t:dt(240),x:"Client prévenu : livraison des tuiles demain 8 h."}],ph:[],tk:[{x:"Dépose de l'ancienne couverture",d:1},{x:"Contrôle de la charpente",d:1},{x:"Pose des écrans sous toiture",d:0},{x:"Pose des tuiles",d:0},{x:"Nettoyage du chantier",d:0}]},
+ {id:2,n:"Gouttières Keller",v:"Marmoutier",notes:[{t:dt(3000),x:"Devis accepté. Prévoir échelle de 8 m."}],ph:[],tk:[{x:"Commande du zinc",d:1},{x:"Dépose des anciennes gouttières",d:0},{x:"Pose des nouvelles gouttières",d:0}]}]}}
+function ch(id){return S.ch.find(function(c){return c.id===id})}
+function pct(c){return c.tk.length?Math.round(c.tk.filter(function(t){return t.d}).length*100/c.tk.length):0}
+function fdt(s){return new Date(s).toLocaleString("fr-FR",{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"})}
+function draw(){var a=$("app"),h="";
+ if(view.n==="list"){h='<div class="top"><div class="r"><h2>Carnet de chantier</h2></div><div class="sub">Toitures Martin · exemple fictif</div></div><div class="body"><div class="badge" id="off">Hors ligne : tout continue de fonctionner.</div><div class="ins" id="ins"><b>Installer l\'application</b><span id="insx">Ajoutez-la à votre écran d\'accueil pour l\'utiliser comme une application.</span><div class="b"><button class="btn sm y" id="inst" type="button" hidden>Installer</button><button class="btn sm g" id="insn" type="button">Plus tard</button></div></div>'+S.ch.map(function(c){var p=pct(c);return '<button class="ch" data-o="'+c.id+'" type="button"><b>'+esc(c.n)+'</b><span>'+esc(c.v)+'</span><div class="pb"><i style="width:'+p+'%"></i></div><div class="m"><span>'+p+' % des tâches</span><span>'+c.notes.length+' notes · '+c.ph.length+' photos</span></div></button>'}).join("")+'</div><button class="fab" id="nc" type="button">+ Chantier</button>'}
+ else{var c=ch(view.id);h='<div class="top"><div class="r"><button class="ib" id="bk" type="button" aria-label="Retour">‹</button><h2>'+esc(c.n)+'</h2><button class="ib" id="rp" type="button" aria-label="Compte rendu" title="Compte rendu">⎙</button></div><div class="sub">'+esc(c.v)+' · '+pct(c)+' % des tâches faites</div></div><div class="body"><div class="tabs" role="group">'+[["notes","Notes"],["ph","Photos"],["tk","À faire"]].map(function(t){return '<button type="button" data-t="'+t[0]+'" aria-pressed="'+(view.tab===t[0])+'">'+t[1]+'</button>'}).join("")+'</div>';
+  if(view.tab==="notes")h+='<div class="add"><textarea id="nx" placeholder="Ajouter une note…" aria-label="Nouvelle note"></textarea><button class="btn y" id="na" type="button">OK</button></div>'+(c.notes.length?c.notes.slice().reverse().map(function(n){return '<div class="nt"><small>'+fdt(n.t)+'</small>'+esc(n.x)+'</div>'}).join(""):'<p class="empty">Aucune note pour ce chantier.</p>');
+  if(view.tab==="ph")h+='<label class="cam"><input id="fi" type="file" accept="image/*" capture="environment" hidden> 📷 Prendre une photo</label>'+(c.ph.length?'<div class="ph">'+c.ph.map(function(p,i){return '<button type="button" data-p="'+i+'"><img alt="Photo du chantier" src="'+p.u+'"></button>'}).join("")+'</div>':'<p class="empty">Aucune photo. Prenez-en une avec l\'appareil du téléphone.</p>');
+  if(view.tab==="tk")h+='<div class="add"><input id="tx" placeholder="Ajouter une tâche…" aria-label="Nouvelle tâche"><button class="btn y" id="ta" type="button">OK</button></div>'+c.tk.map(function(t,i){return '<button class="tk'+(t.d?" d":"")+'" data-k="'+i+'" type="button"><i>'+(t.d?"✓":"")+'</i><span>'+esc(t.x)+'</span></button>'}).join("");
+  h+='<div class="act"><button class="btn g" id="rp2" type="button">Compte rendu (PDF)</button></div></div><div class="vw" id="vw"><img id="vi" alt=""><button class="btn y" id="vc" type="button">Fermer</button></div>'}
+ a.innerHTML=h;st()}
+function st(){var o=$("off");if(o)o.classList.toggle("on",!navigator.onLine);var i=$("ins");if(i&&!standalone()&&!sessionStorage.getItem("insn")){if(defer){i.classList.add("on");$("inst").hidden=false}else if(/iphone|ipad/i.test(navigator.userAgent)){i.classList.add("on");$("insx").textContent="Touchez « Partager », puis « Sur l\'écran d\'accueil »."}}}
+function standalone(){return matchMedia("(display-mode: standalone)").matches||navigator.standalone}
+function resize(f){return new Promise(function(ok,ko){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var m=1000,s=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext("2d").drawImage(im,0,0,c.width,c.height);ok(c.toDataURL("image/jpeg",.72))};im.onerror=ko;im.src=r.result};r.onerror=ko;r.readAsDataURL(f)})}
+function report(){var c=ch(view.id);$("rep").innerHTML='<h1>Compte rendu de chantier</h1><div>'+esc(c.n)+' · '+esc(c.v)+' · '+new Date().toLocaleDateString("fr-FR")+' <em>(document de démonstration)</em></div><h2>Avancement : '+pct(c)+' %</h2><ul>'+c.tk.map(function(t){return '<li>'+(t.d?"☑":"☐")+" "+esc(t.x)+'</li>'}).join("")+'</ul><h2>Notes</h2><ul>'+c.notes.map(function(n){return '<li><b>'+fdt(n.t)+'</b> — '+esc(n.x)+'</li>'}).join("")+'</ul>'+(c.ph.length?'<h2>Photos</h2>'+c.ph.map(function(p){return '<img src="'+p.u+'" alt="">'}).join(""):"");setTimeout(function(){window.print()},60)}
+$("app").addEventListener("click",function(e){var t=e.target.closest("button,label");if(!t)return;var c=view.id&&ch(view.id);
+ if(t.hasAttribute("data-o")){view={n:"c",id:+t.getAttribute("data-o"),tab:"notes"};draw()}
+ else if(t.id==="bk"){view={n:"list"};draw()}
+ else if(t.hasAttribute("data-t")){view.tab=t.getAttribute("data-t");draw()}
+ else if(t.id==="na"){var v=$("nx").value.trim();if(!v)return;c.notes.push({t:dt(0),x:v});put();draw()}
+ else if(t.id==="ta"){var x=$("tx").value.trim();if(!x)return;c.tk.push({x:x,d:0});put();draw()}
+ else if(t.hasAttribute("data-k")){var k=c.tk[+t.getAttribute("data-k")];k.d=k.d?0:1;put();draw()}
+ else if(t.hasAttribute("data-p")){$("vi").src=c.ph[+t.getAttribute("data-p")].u;$("vw").classList.add("on")}
+ else if(t.id==="vc"){$("vw").classList.remove("on")}
+ else if(t.id==="rp"||t.id==="rp2"){report()}
+ else if(t.id==="nc"){var n=prompt("Nom du chantier ?");if(n&&n.trim()){S.ch.unshift({id:Date.now(),n:n.trim(),v:"",notes:[],ph:[],tk:[]});put();draw()}}
+ else if(t.id==="inst"||t.id==="inst2"){if(defer){defer.prompt();defer=null}}
+ else if(t.id==="insn"){try{sessionStorage.setItem("insn","1")}catch(x){}$("ins").classList.remove("on")}
+});
+$("app").addEventListener("change",function(e){if(e.target.id!=="fi"||!e.target.files[0])return;var c=ch(view.id);resize(e.target.files[0]).then(function(u){c.ph.push({u:u,t:dt(0)});put();draw()}).catch(function(){})});
+$("rs").onclick=function(){S=seed();put();view={n:"list"};draw()};
+window.addEventListener("online",st);window.addEventListener("offline",st);
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();defer=e;$("inst2").hidden=false;st()});
+window.addEventListener("appinstalled",function(){defer=null;$("inst2").hidden=true});
+$("inst2").onclick=function(){if(defer){defer.prompt();defer=null}};
+if(standalone())document.body.classList.add("sa");
+if("serviceWorker" in navigator)navigator.serviceWorker.register("/outils/carnet/sw.js",{scope:"/outils/carnet/"}).catch(function(){});
+get().then(function(s){S=s&&s.ch?s:seed();draw()});
+})();
+</script></body></html>
