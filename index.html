@@ -1071,6 +1071,14 @@ footer .endcta{align-items:end}
 .tr.hl .bdg{background:#fff;color:var(--ink)}
 body:not(.pg) .stats b{grid-area:auto;align-self:flex-start;justify-self:start;width:auto;text-align:left}
 body:not(.pg) .stats .tx{grid-area:auto;align-self:flex-start}
+.incl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 20px;padding:18px 24px}
+.incl .h{grid-column:1/-1;margin:0;font:600 12px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.incl li:not(.h){align-items:flex-start;line-height:20px}.incl svg{margin-top:2px}
+@media(max-width:1000px){.incl{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.incl{grid-template-columns:1fr}}
+.tr{position:relative}
+.tr .bdg{position:absolute;top:24px;right:24px;margin:0}
+.tr .lab+.ideal{margin-top:12px}
+.tr.hl .px small{color:#B9C8D3}
 /* bandeau final + pied de page */
 footer{background:var(--ink);color:#EAF1F5}
 .endcta{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,72px);align-items:end;padding:clamp(56px,7vw,104px) 0 clamp(40px,5vw,72px);border-bottom:1px solid rgba(255,255,255,.14)}
@@ -1133,9 +1141,9 @@ footer .fl a{color:#EAF1F5}
  <aside><span class="lab">Tarifs</span><h2>Un prix annoncé d'avance.</h2><p>Le devis est écrit et détaille ce qui est livré. Le prix annoncé est le prix payé.</p></aside>
  <div>
   <h3 class="sub3">Création</h3>
-  <ul class="incl rv" aria-label="Inclus dans chaque site"><li class="h">Chaque site comprend</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Maquette gratuite avant tout engagement</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Site et nom de domaine à votre nom</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Affichage soigné sur téléphone</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Retouches après la mise en ligne</li></ul>
+  <ul class="incl rv" aria-label="Inclus dans chaque site"><li class="h">Chaque site comprend</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Maquette gratuite d'abord</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Site et nom de domaine à votre nom</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Affichage soigné sur téléphone</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Retouches après la mise en ligne</li></ul>
   <div class="rows">
-   <div class="tr rv hl"><div><h3>Page unique</h3><span class="lab">Tarif de lancement</span><span class="bdg">Recommandé</span><p class="ideal">Idéal pour démarrer et être trouvé</p></div><ul><li>Présenter vos services et recevoir des demandes sur une page</li><li>Lisible sur téléphone, textes rédigés avec vous</li><li>Mise en ligne et nom de domaine (première année) inclus</li></ul><div class="px">300 €</div></div>
+   <div class="tr rv hl"><span class="bdg">Recommandé</span><div><h3>Page unique</h3><span class="lab">Tarif de lancement</span><p class="ideal">Idéal pour démarrer et être trouvé</p></div><ul><li>Présenter vos services et recevoir des demandes sur une page</li><li>Lisible sur téléphone, textes rédigés avec vous</li><li>Mise en ligne et nom de domaine (première année) inclus</li></ul><div class="px"><small>pour une page</small> 300 €</div></div>
    <div class="tr rv"><div><h3>Site vitrine</h3><span class="lab">Selon les pages</span><p class="ideal">Idéal pour une entreprise établie</p></div><ul><li>4 à 5 pages : accueil, services, réalisations, contact</li><li>Pages structurées autour de vos services et de votre zone d'intervention</li><li>Le devis fixe le montant exact selon le nombre de pages</li></ul><div class="px"><small>à partir de</small> 800 €</div></div>
   </div>
   <h3 class="sub3">Suivi <small>facultatif, distinct de la création</small></h3>
