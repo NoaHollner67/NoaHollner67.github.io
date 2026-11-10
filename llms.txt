@@ -16,3 +16,29 @@
 
 ## Mentions
 - https://noahollner.fr/mentions-legales.html
+
+
+## Pages par métier
+- Couvreurs : https://noahollner.fr/couvreur/
+- Plombiers-chauffagistes : https://noahollner.fr/plombier-chauffagiste/
+- Électriciens : https://noahollner.fr/electricien/
+- Peintres : https://noahollner.fr/peintre/
+- Maçons : https://noahollner.fr/macon/
+- Menuisiers : https://noahollner.fr/menuisier/
+- Carreleurs : https://noahollner.fr/carreleur/
+- Plâtriers et plaquistes : https://noahollner.fr/plaquiste/
+- Paysagistes : https://noahollner.fr/paysagiste/
+- Coiffeurs : https://noahollner.fr/coiffeur/
+- Garagistes : https://noahollner.fr/garagiste/
+- Boulangers et pâtissiers : https://noahollner.fr/boulanger/
+- Restaurants : https://noahollner.fr/restaurant/
+- Kinésithérapeutes : https://noahollner.fr/kinesitherapeute/
+- PME et entreprises : https://noahollner.fr/pme-entreprises/
+
+## Pages par ville
+- Saverne : https://noahollner.fr/saverne/
+- Haguenau : https://noahollner.fr/haguenau/
+- Sarre-Union : https://noahollner.fr/sarre-union/
+- Marmoutier : https://noahollner.fr/marmoutier/
+- Wasselonne : https://noahollner.fr/wasselonne/
+- Bouxwiller : https://noahollner.fr/bouxwiller/
