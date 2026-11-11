@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /maquettes/
 
 User-agent: ChatGPT-User
 Allow: /
